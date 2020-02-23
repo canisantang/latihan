@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .animate {
+            transition: width 2s, height 4s ;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" style="width: 300px; height: 300px; background-color: red"></div>
+    <br />
+    <div>
+        Pilih warna box;
+        <select id="color-list">
+            <option value="red" checked>Red</option>
+            <option value="green" checked>Green</option>
+            <option value="blue" checked>Blue</option>
+            <option value="yellow" checked>Yellow</option>
+            <option value="gray" checked>Gray</option>
+        </select>
+    </div>
+
+    <div>
+        Pilih size box;
+        <select id="size-list">
+            <option value="200px" checked>200</option>
+            <option value="300px" checked>300</option>
+            <option value="400px" checked>400</option>
+        </select>
+    </div>
+
+    <div>
+        Tampilkan box;
+        <select id="box-show">
+            <option value="block" checked>Show</option>
+            <option value="none" checked>Hide</option>
+            <!-- <option value="show" checked>Show</option> -->
+            <!-- <option value="hide" checked>Hide</option> -->
+        </select>
+    </div>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        //var box = document.getElementByClassName("test");
+        //var test = box(0);
+
+        //dom javascript
+        //var box = document.getElementById("box");
+        //var colorlist = document.getElementById("color-list")
+        //colorlist.addEventListener('change', function(eventSelect){
+        //box.style.backgroundColor = event.target.value;
+        //});
+
+        //jquery
+        $(document).ready(function(){
+            var box = $("#box");
+            var colorList = $("#color-list");
+            var sizeList = $("#size-list");
+        var boxShow = $("#box-show");
+
+            //event listener color list, tampilan box
+            colorList.on('change', function(eventSelect){
+                box.css('background-color', eventSelect.target.value);
+            });
+
+            //event listener size list, tampilan size
+            sizeList.on('change', function(eventSelect){
+                box.css('width', eventSelect.target.value);
+                box.css('height', eventSelect.target.value);
+                box.addClass('animate');
+            });
+
+            //tampil show/hide
+            boxShow.on('change', function(eventSelect){
+                box.css('display', eventSelect.target.value);
+            });
+            //	if(eventSelect.target.value == "show"){
+                //box.css('display', 'block');
+                //box.css('opacity', 1);
+            //	box.show(600);
+            //}else{
+                //box.css('display', 'none');
+                //box.css('opacity', 0);
+                //box.hide(600);
+            //}
+            });
+    </script>
+    
+</body>
+</html>
